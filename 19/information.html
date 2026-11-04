@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>biochemistry</title>
+<style>
+  :root { box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  html { background: #000; color: #fff; }
+  body { background: #000; color: #fff; font-family: monospace; font-size: 16px; line-height: 1.5; margin: 16px; max-width: 700px; }
+  a { color: #00A5FF; }
+  a:has(button) { text-decoration: none; }
+  button { background: #000; color: #fff; border: 2px solid #fff; border-radius: 0; font-family: monospace; font-size: 16px; padding: 8px 16px; cursor: pointer; }
+  h2 { font-size: 18px; margin: 32px 0 8px; }
+  pre { border: 1px solid #fff; border-radius: 0; padding: 12px; margin: 0 0 20px; overflow-x: auto; tab-size: 2; font-family: monospace; font-size: 15px; line-height: 1.4; }
+  .red { color: #f00; }
+  .art { border: 0; padding: 0; margin: 32px 0; overflow: hidden; line-height: 1; font-size: min(11px, calc((100vw - 34px) / 47.7)); -webkit-text-size-adjust: none; text-size-adjust: none; }
+  #syntax { display: none; }
+  #syntax:target, #syntax:has(:target) { display: block; }
+  body:has(#syntax:target) #main, body:has(#syntax :target) #main { display: none; }
+  .toc { list-style: none; padding: 0; margin: 0 0 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+</style>
+</head>
+<body>
+
+<div id="main">
+  <h1>biochemistry</h1>
+
+  <p>biochemistry — создавайте, программируйте и изучайте цифровую жизнь через редактор с простым синтаксисом, компилирующим через виртуальную машину</p>
+
+  <p class="red"><b>Важно!:</b> всё написано с самыми минимальными знаниями программирования, а математика и логика создана и придумана 1 школотроном, так что если заметите баг, нежелательное поведение или ошибку — просим написать на почту «biochemistrydev@gmail.com» о вашей проблеме!</p>
+
+  <p><a href="https://t.me/+f6mtIb8rrTU1MTgy"><button type="button">скачать apk и исходный код</button></a></p>
+
+  <p><a href="https://t.me/+YThkD1XA8745M2Y6"><button type="button">сообщество симуляции</button></a></p>
+
+  <p><a href="#syntax"><button type="button">изучить синтаксис</button></a></p>
+
+  <p>системную часть сайта написал Клод, потому что я безработная крыса</p>
+</div>
+
+<div id="syntax">
+  <p><a href="#"><button type="button">назад</button></a></p>
+  <h1>синтаксис</h1>
+
+  <ul class="toc">
+    <li><a href="#s-break">break</a></li>
+    <li><a href="#s-color">Цвет</a></li>
+    <li><a href="#s-vars">Переменные</a></li>
+    <li><a href="#s-types">Типы данных</a></li>
+    <li><a href="#s-change">Изменение значений</a></li>
+    <li><a href="#s-math">Вычисления</a></li>
+    <li><a href="#s-if">Условия</a></li>
+    <li><a href="#s-split">Деление</a></li>
+    <li><a href="#s-heirdom">heirdom</a></li>
+    <li><a href="#s-apoptosis">apoptosis</a></li>
+    <li><a href="#s-loop">load и return</a></li>
+    <li><a href="#s-organelle">organelle</a></li>
+    <li><a href="#s-morphogen">Эмбриология и морфогены</a></li>
+  </ul>
+
+  <h2 id="s-break">break</h2>
+  <p>В конце каждого скрипта должен находиться <b>break</b>: без него компилятор не поймёт, где скрипт заканчивается. Также с его помощью можно завершить скрипт раньше, чем закончится сам код.</p>
+
+  <h2 id="s-color">Цвет</h2>
+  <p>Чтобы задать клетке цвет, используйте название цвета и значение от 0 до 255 (unsigned byte).</p>
+<pre>red 100;
+green 150;
+blue 50;
+break;</pre>
+
+  <h2 id="s-vars">Переменные</h2>
+  <p>Команды такого типа называются функциями, и они могут использовать изменяемые данные. Для этого укажите тип данных, название и значение.</p>
+<pre>byte a 80;
+byte b 20;
+red a;
+green a;
+blue b;
+break;</pre>
+  <p>В этом примере создаются две переменные со значениями 80 и 20, после чего они используются в цветах клетки.</p>
+
+  <h2 id="s-types">Типы данных</h2>
+  <p>Существует три типа данных: <b>byte</b>, <b>int</b> и <b>float</b>. Каждый подходит для своих задач: например, byte нужен для цветов, потому что их функции воспринимают только этот тип.</p>
+  <p>byte хранит 2^8 значений, int хранит 2^32 значений. float хранит столько же, сколько int, но, в отличие от byte и int, не является целочисленным, поэтому может хранить дробные числа.</p>
+
+  <h2 id="s-change">Изменение значений</h2>
+  <p>Значения созданных переменных можно менять в реальном времени.</p>
+<pre>byte a 0;
+a a + 1;
+red a;
+break;</pre>
+  <p>В примере выше значение задаётся на ходу через вычисление «a a + 1». Оно означает, что a (первое значение) = a + 1.</p>
+
+  <h2 id="s-math">Вычисления</h2>
+  <p>Можно создавать более сложные вычисления, используя «-», «+», «/» и «*».</p>
+<pre>byte v 10;
+byte v2 10;
+byte v3 20;
+byte r 0;
+r v * v2 - v3;
+red r;
+break;</pre>
+
+  <h2 id="s-if">Условия</h2>
+  <p>Чтобы создать условие, используйте операторы «==», «&lt;», «!=» и числа.</p>
+<pre>int a 50;
+if a &lt; 100 {
+  red 0;
+  green 0;
+  blue 0;
+}
+break;</pre>
+  <p>Этот пример сделает клетку тёмной, если условие a &lt; 100 верно. Оператор «==» проверяет, совпадают ли значения, а «!=» проверяет, что они не совпадают.</p>
+
+  <h2 id="s-split">Деление</h2>
+  <p>Теперь, когда у вас есть основа логики клетки, вы можете заставить её делиться и выполнять другие действия. Для деления используйте <b>split</b>.</p>
+  <p>«split 0» делит клетку на две.<br>«split 1» делит её на две скреплённые части.</p>
+
+  <h2 id="s-heirdom">heirdom</h2>
+  <p>При делении клетка обнуляет все изменяемые значения (переменные). Чтобы этого не происходило, добавьте <b>heirdom</b> после инициализации.</p>
+  <p>«heirdom 0» передаёт значения первой клетке-потомку (то есть при делении значение будет храниться только в одной из двух клеток).<br>«heirdom 1» делает то же самое, но для второго потомка.<br>«heirdom 2» передаёт значения обоим потомкам.</p>
+<pre>byte s 0 heirdom 2;
+if s &lt; 3 {
+  s s + 1;
+  split 1;
+}
+break;</pre>
+  <p>В этом примере за 3 шага создаётся дерево из связанных клеток. Перед делением клетка проверяет значение s. Если оно меньше 3, клетка прибавляет к нему 1 и делится, передавая значение s потомкам. Так продолжается, пока s не станет равным 3.</p>
+
+  <h2 id="s-apoptosis">apoptosis</h2>
+  <p>Клетки можно так же легко уничтожать, как и делить, командой <b>apoptosis</b>.</p>
+  <p class="red"><b>Важно!:</b> «apoptosis» и «split 1» работают как «break»: клетка не выполняет то, что написано после них. Поэтому, если клетка в любом случае делится или самоуничтожается, «break» в конце скрипта можно не ставить.</p>
+
+  <h2 id="s-loop">load и return</h2>
+  <p>Если нужно повторить определённый код больше одного раза за обновление клетки, используйте <b>load</b> и <b>return</b>. Поставьте «load» в точку, куда хотите вернуться, а «return» в точку, откуда нужно вернуться к «load».</p>
+<pre>byte a 0;
+load;
+a a + 1;
+if a &lt; 99 {
+  return;
+}
+red a;
+break;</pre>
+  <p>Хотя здесь написано «a a + 1», на деле за каждое обновление к a будет прибавляться 99, потому что «a a + 1» повторяется снова и снова, пока значение a не дойдёт до 99.</p>
+
+  <h2 id="s-organelle">organelle</h2>
+  <p>Когда вы разобрались со всеми основными частями виртуальной машины, можно усложнить само устройство клетки. Команда <b>organelle</b> создаёт у клетки работающие отростки. Указав тип (byte), угол (float) и силу (float), вы можете вырастить на нужном участке клетки нужную органеллу.</p>
+<pre>byte init 0;
+if init == 0 {
+  organelle 0 0.35 -0.004 0;
+  organelle 0 -0.35 -0.004 1;
+  red 30;
+  green 180;
+  blue 50;
+  init 1;
+}
+break;</pre>
+  <p>Как видно из примера, создаётся подобие хламидомонады.</p>
+
+  <h2 id="s-morphogen">Эмбриология и морфогены</h2>
+  <p>Клетки могут передавать сигнал на расстояние в нужном вам радиусе.</p>
+  <p>Чтобы создать морфоген (сигнал с определённым радиусом), используйте команду <b>diffusion</b> в такой конфигурации:</p>
+<pre>diffusion &lt;int&gt; номер &lt;float&gt; радиус &lt;float&gt; скорость;</pre>
+  <p>«скорость» это ослабление сигнала за каждый кадр.</p>
+  <p>Теперь, когда вы создали сигнал, вы можете получить информацию о дистанции, если клетка находится в его радиусе. Для этого обратитесь к рецепторам командой <b>detect</b>, записав результат в переменную в таком виде:</p>
+<pre>detect &lt;int&gt; номер морфогена, откуда берём &lt;переменная&gt; куда записываем;</pre>
+  <p>Пример клеток, красящих себя в зависимости от дистанции:</p>
+<pre>byte t 0;
+float c 0;
+float tiny 0.05;
+float low 1;
+if t == 0 {
+  diffusion 0 5 0.01;
+}
+t t + 1;
+if t == 90 {
+  t 0;
+}
+detect 0 c;
+red 0;
+green 0;
+blue 255;
+if tiny &lt; c {
+  red 0;
+  green 255;
+  blue 0;
+}
+if low &lt; c {
+  red 255;
+  green 0;
+  blue 0;
+}
+break;</pre>
+  <p>Переменная для detect должна быть типа float, а сравнивать float можно только с другой переменной float, а не с числом, поэтому здесь есть tiny и low. Счётчик t нужен, чтобы морфоген создавался не каждый кадр, а раз в 90 кадров: сигнал живёт примерно 100 кадров.</p>
+  <p class="red"><b>Важно!:</b> когда клетка не находится в радиусе морфогена, параметр, который вы можете получить через detect, медленно угасает по формуле «силаМорфогена *= 0.9». Когда клетка в зоне досягаемости морфогена, она получает от него сигнал «радиус / (дистанция + 1)».</p>
+
+  <pre class="art"><span style="color:#FFA500">                                                 -</span>
+<span style="color:#FFA500">                                                 @</span>
+<span style="color:#FFA500">                                                 @@</span>
+<span style="color:#FFA500">                                                 @@</span>
+<span style="color:#FFA500">                                                 @@@</span>
+<span style="color:#FFA500">                                                @@@=</span>
+<span style="color:#FFA500">                                               -@@@</span>
+<span style="color:#FFA500">                                              @@@@@</span>
+<span style="color:#FFA500">                                             @@@@@</span>
+<span style="color:#FFA500">                                           @@@@@@</span>
+<span style="color:#FFA500">                                         %@@@@@@</span>
+<span style="color:#FFA500">                                       +@@@@@@+</span>
+<span style="color:#FFA500">                                     :@@@@@@%           ::</span>
+<span style="color:#FFA500">                                   @@@@@@@@           @@</span>
+<span style="color:#FFA500">                                 @@@@@@@@        =@@@</span>
+<span style="color:#FFA500">                               @@@@@@@@        @@@@</span>
+<span style="color:#FFA500">                             #@@@@@@#-      #@@@%</span>
+<span style="color:#FFA500">                           +@@@@@@@-      +@@@@+</span>
+<span style="color:#FFA500">                         :@@@@@@@%       @@@@@</span>
+<span style="color:#FFA500">                         @@@@@@@        @@@@@@</span>
+<span style="color:#FFA500">                        @@@@@@         @@@@@@</span>
+<span style="color:#FFA500">                       @@@@@@@         @@@@@@</span>
+<span style="color:#FFA500">                       @@@@@@          @@@@@@</span>
+<span style="color:#FFA500">                       @@@@@@          @@@@@@@</span>
+<span style="color:#FFA500">                        @@@@@          @@@@@@@@</span>
+<span style="color:#FFA500">                        @@@@@:          @@@@@@@@</span>
+<span style="color:#FFA500">                         @@@@@           @@@@@@@@</span>
+<span style="color:#FFA500">                          .@@@@           .@@@@@@@</span>
+<span style="color:#FFA500">                           -@@@*           =@@@@@@</span>
+<span style="color:#FFA500">                             *@@@           @@@@@@</span>
+<span style="color:#FFA500">                                @@.          @@@@@</span>
+<span style="color:#FFA500">                                  @@         @@@@</span>
+<span style="color:#FFA500">                                            @@@</span>
+<span style="color:#00A5FF">                  @@@@@@@+ ..              </span><span style="color:#FFA500">@@.</span><span style="color:#00A5FF">                     %@@@@@</span>
+<span style="color:#00A5FF">               @@@@@@@@@                            =***@@*           =@@@@*</span>
+<span style="color:#00A5FF">               #@@@@@@@@@@+--------------------=@@@@@@@@@@@@           #@@@@-</span>
+<span style="color:#00A5FF">                  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                @@@@@</span>
+<span style="color:#00A5FF">                             @@@@@@@@@@@@@@@*                           @@@@@</span>
+<span style="color:#00A5FF">                                                                        @@@@@</span>
+<span style="color:#00A5FF">             %%%@@@::.                                                .@@@@@</span>
+<span style="color:#00A5FF">          +@@@@@@                                                    +@@@@+</span>
+<span style="color:#00A5FF">          #@@@@@@@@@-----                         .-----@@@@@-     -@@@##</span>
+<span style="color:#00A5FF">             @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@     @@@@</span>
+<span style="color:#00A5FF">                      @@@@@@@@@@@@@@@@@@@@@@@@@@@@@            @@@</span>
+<span style="color:#00A5FF"></span>
+<span style="color:#00A5FF"></span>
+<span style="color:#00A5FF">                     ++@@</span>
+<span style="color:#00A5FF">              :    :@@@@@@@:::::::     ::::::::=@:.</span>
+<span style="color:#00A5FF">         @@@@       @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</span>
+<span style="color:#00A5FF">    @@@@@               @@@@@@@@@@@@@@@@@@@@@@@@@@</span>
+<span style="color:#00A5FF"> @@@@@@@                                                             @</span>
+<span style="color:#00A5FF">@@@@@@@@#                                                         #@@@</span>
+<span style="color:#00A5FF"> +@@@@@@@@@@+++                                             +++@@@@@++</span>
+<span style="color:#00A5FF">   :%%@@@@@@@@@@@@@@=:::::                      ::::::=@@@@@@@@@%%+      :@</span>
+<span style="color:#00A5FF">          @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-          @@@</span>
+<span style="color:#00A5FF">                         @@@@@@@@@@@@@@@@@@@@@.                   @@@@@</span>
+<span style="color:#00A5FF">                                                           @@@@@@@@</span>
+<span style="color:#00A5FF">              -- #########:               :##########@@@@@@----:</span>
+<span style="color:#00A5FF">                      **********%@@@@@@@@@@%**********.</span>
+
+
+                                    .                           ..
+                               -*   #                        -@%::=@%
+        .      .      ::.        .:.     .      .        .   %=    :@:
+        @@    :@.  :@%-:*@*    @@=-*@*   @+   %@:       :@.        %@
+        @@    :@.        #@   @@    :@:  @+ .@#                .@@@%
+        =@*   +@.   #@@@@@@   @@@@@@@@+  @@@@=                     +@.
+          .-=-*@.  @#    +@   @#         @+ .@@              *.     @+
+              :@.  @@= :%@@   :@@.  *@   @+   %@-       .@   #@+  :@@
+               =    .=+=  =     .+++.    =     .=        =     -++=</pre>
+
+  <p><a href="#syntax"><button type="button">к оглавлению</button></a> <a href="#"><button type="button">назад</button></a></p>
+</div>
+
+</body>
+</html>
