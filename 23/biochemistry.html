@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>biochemistry</title>
+<style>
+  :root { box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  html { background: #000; color: #fff; }
+  body { background: #000; color: #fff; font-family: monospace; font-size: 16px; line-height: 1.5; margin: 16px; max-width: 700px; }
+  a { color: #00A5FF; }
+  a:has(button) { text-decoration: none; }
+  button { background: #000; color: #fff; border: 2px solid #fff; border-radius: 0; font-family: monospace; font-size: 16px; padding: 8px 16px; cursor: pointer; }
+  h2 { font-size: 18px; margin: 32px 0 8px; }
+  details { margin: 6px 0; }
+  details details { margin-left: 4px; padding-left: 12px; border-left: 1px solid #fff; }
+  summary { cursor: pointer; font-weight: bold; padding: 4px 0; font-size: 16px; }
+  #syntax > details > summary { font-size: 18px; }
+  .key { color: #ff0; }
+  .cmd { color: #007fff; }
+  .btns { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; }
+  pre { border: 1px solid #fff; border-radius: 0; padding: 12px; margin: 0 0 20px; overflow-x: auto; tab-size: 2; font-family: monospace; font-size: 15px; line-height: 1.4; }
+  .red { color: #f00; }
+  .art { border: 0; padding: 0; margin: 32px 0; overflow: hidden; line-height: 1; font-size: min(11px, calc((100vw - 34px) / 47.7)); -webkit-text-size-adjust: none; text-size-adjust: none; }
+  ul { padding-left: 20px; }
+  #privacy { display: none; }
+  #privacy:target { display: block; }
+  body:has(#privacy:target) #main { display: none; }
+  #syntax { display: none; }
+  #syntax:target, #syntax:has(:target) { display: block; }
+  body:has(#syntax:target) #main, body:has(#syntax :target) #main { display: none; }
+  .toc { list-style: none; padding: 0; margin: 0 0 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+</style>
+</head>
+<body>
+
+<div id="main">
+  <h1>biochemistry</h1>
+
+  <p>biochemistry — создавайте, программируйте и изучайте цифровую жизнь через редактор с простым синтаксисом, компилирующим через виртуальную машину</p>
+
+  <p class="red"><b>Важно!:</b> всё написано с самыми минимальными знаниями программирования, а математика и логика создана и придумана 1 школотроном, так что если заметите баг, нежелательное поведение или ошибку — просим написать на почту «biochemistrydev@gmail.com» о вашей проблеме!</p>
+
+  <h2>Скачать исходный код и apk</h2>
+  <div class="btns">
+    <a href="https://github.com/bioChemistryDeveloping/bioChemistry"><button type="button">github</button></a>
+    <a href="https://t.me/+f6mtIb8rrTU1MTgy"><button type="button">telegram</button></a>
+  </div>
+
+  <h2>Информация</h2>
+  <div class="btns">
+    <a href="https://t.me/+YThkD1XA8745M2Y6"><button type="button">сообщество</button></a>
+    <a href="#syntax"><button type="button">синтаксис</button></a>
+  </div>
+
+  <h2>Другое</h2>
+  <div class="btns">
+    <a href="#privacy"><button type="button">политика конфиденциальности</button></a>
+  </div>
+
+  <p>системную часть сайта написал Клод, потому что я безработная крыса</p>
+</div>
+
+<div id="syntax">
+  <p><a href="#"><button type="button">назад</button></a></p>
+  <h1>синтаксис</h1>
+
+<details open><summary>редактор</summary>
+<p>Используйте редактор для программ работающих в виртуальной машине</p>
+<p>Чтобы выйти, нажмите на красную кнопку с крестиком</p>
+<p>Чтобы скомпилировать код в байт-код и загрузить его в виртуальную машину создаваемой клетки через редактор - нажмите на кнопку <span class="cmd">compilate</span></p>
+<p>Снизу вы можете увидеть консоль - передвигайте верхний синий квадрат, чтобы менять её разрешение</p>
+<p>В консоли будет написано, правильно ли скомпилировался код</p>
+<p>Используйте команды (слова, предложения и прочие токены) с «;» в конце, в поле редактирования кода, чтобы заставить клетку делать те или иные действия</p>
+</details>
+<details open><summary>синтаксис</summary>
+<details><summary>конец скрипта</summary>
+<p>Когда вы компилируете программу, компилятор проходится по всем командам и ставит пути, поэтому чтобы тот знал где остановиться, необходимо ставить <span class="cmd">break</span> там, <span class="key">где дальше нет команд</span></p>
+<pre>[ваши команды]
+break;</pre>
+</details>
+<details><summary>цвета</summary>
+<p>При создании клетка получает случайные цвета</p>
+<p>Чтобы задать цвет клетке, вы можете использовать команды <span class="cmd">red</span> <span class="cmd">green</span> и <span class="cmd">blue</span> + число от 0 до 255, <span class="key">это задаст цвет тому каналу, который вы выберете</span></p>
+<pre>red 255;
+green 127;
+blue 0;
+break;</pre>
+<p>Это задаст цвет клетки с случайного на оранжевый</p>
+</details>
+<details><summary>комментарии</summary>
+<p>Используйте квадратные скобки <span class="cmd">[ ]</span>, чтобы <span class="key">закомментировать</span> часть кода</p>
+<p>Всё, что находится внутри скобок, <span class="key">будет проигнорировано компилятором</span></p>
+<pre>[red 255]
+[green 255]
+blue 255; [только синий цвет будет ставиться на 255]
+break;</pre>
+</details>
+<details><summary>деление</summary>
+<p>Клетка может делиться на 2, распределяя массу на 2 дочерние клетки, используя команду <span class="cmd">split</span> в такой конфигурации:</p>
+<ul><li>первое значение &lt;byte&gt;:<ul><li>0 — деление <span class="key">без связи</span> (клетки <span class="key">не будут соединены</span> после деления)</li><li>1 — деление <span class="key">со связью</span> (клетки <span class="key">будут соединены</span> связкой)</li></ul></li><li>второе значение &lt;float&gt; — <span class="key">угол</span> деления (направление, в котором разойдутся дочерние клетки)</li></ul>
+<pre>split 0 0;
+break;</pre>
+<pre>split 1 0;
+break;</pre>
+<p>Если нужно, чтобы клетки росли в разные стороны, как будто <span class="key">случайно</span>, используйте <span class="key">псевдослучайный</span> угол: при каждом делении прибавляйте к нему одно и то же число, например 2.4 (это <span class="key">золотой угол</span> в радианах, около 137.5 градуса), и направления будут равномерно распределяться</p>
+<pre>float angle 0 heirdom 2;
+if MASS &gt; 9 {
+  angle angle + 2.4; [новый угол при каждом делении]
+  split 0 angle;
+}
+break;</pre>
+<p>Когда клетка использует <span class="cmd">split</span> - процесс виртуальной машины завершается, и сразу запускается процесс деления (занимает некоторое время), поэтому <span class="key">команды после него не работают</span></p>
+<pre>red 63;
+green 63;
+blue 63;
+split 0 0; [код после этой команды не будет работать, поэтому клетка будет тёмной, хотя дальше все цвета на 255:]
+red 255;
+green 255;
+blue 255;
+break;</pre>
+</details>
+<details><summary>математика</summary>
+<details><summary>данные</summary>
+<details><summary>типы</summary>
+<p>Есть 3 типа данных:</p>
+<ul><li>byte — весят 8 бит, могут хранить от -128 до 127 или от 0 до 255 целых чисел</li><li>int — весят 32 бит, могут хранить от -2147483648 до 2147483647 или от 0 до 4294967295 целых чисел</li><li>float — весят 32 бит, могут хранить от -16777216 до 16777215 или от 0 до 33554432 дробных чисел</li></ul>
+<p>Разные функции могут использовать разные типы данных</p>
+<p><span class="cmd">red</span>, <span class="cmd">green</span> и <span class="cmd">blue</span> <span class="key">принимают byte, используя в формате от 0 до 255</span></p>
+</details>
+<details><summary>создание</summary>
+<p>Вы можете создать <span class="key">переменную</span> и менять её по своему усмотрению, во время работы виртуальной машины</p>
+<details><summary>инициализация</summary>
+<p>Чтобы создать данное, необходимо указать <span class="key">тип, название и значение</span></p>
+<pre>byte a 10; [это создаст число, которое может хранить 256 значений]
+break;</pre>
+<p>Данное можно использовать для функционала</p>
+<pre>byte a 60;
+byte b 120;
+red a;
+green a;
+blue b;
+break;</pre>
+</details>
+<details><summary>наследование</summary>
+<p>После деления клетка сбрасывает все значения на те, которые указаны при создании</p>
+<pre>byte a 10;
+a 200;
+split 0 0; [дочерние клетки до своих итераций будут хранить 'a' опять с числом 10]</pre>
+<p>Чтобы избежать этого, используйте <span class="key">модификатор</span> <span class="cmd">heirdom</span> + значение, <span class="key">которое укажет у какой клетки значение не сбросится</span></p>
+<pre>byte using 0 heirdom 0;
+red using;
+using using + 255;
+split 0 0;</pre>
+<p>Какие числа что значат:</p>
+<ul><li>0 — <span class="key">1 клетка наследует</span> значение</li><li>1 — <span class="key">2 клетка наследует</span> значение</li><li>2 — <span class="key">обе клетки наследуют</span> значение</li></ul>
+</details>
+</details>
+<details><summary>редактирование</summary>
+<p>Вы можете <span class="key">редактировать данные через операторы</span> <span class="cmd">-, +, /, *</span> и другие данные</p>
+<pre>byte a 100; [если что у данных может быть любое название, но нежелательно, чтобы оно совпадало с функцией или что-либо другое, связанное с кодом (условно "green" лучше не использовать)]
+byte b 30;
+byte c 70;
+c a + b;
+green c;
+red c;
+blue a;
+break;</pre>
+<p>Можно использовать и более сложные вычисления</p>
+<pre>byte a 100;
+byte b 30;
+byte c 70;
+c a - b * a + b * 23;
+green c;
+red c;
+blue a;
+break;</pre>
+<p>Можно менять цвет каждую итерацию</p>
+<pre>byte f 0;
+f f + 1;
+red f;
+green f;
+blue f;
+break;</pre>
+</details>
+<details><summary>встроенные переменные</summary>
+<p>У клеток есть <span class="key">встроенные переменные</span>, даже если они <span class="key">не объявлены в скрипте</span></p>
+<p>Из них:</p>
+<ul><li>MASS — <span class="key">масса</span> клетки</li><li>LINKS — <span class="key">количество связей</span> с клетками (смежные клетки с физической связью)</li><li>PI — число пи, подойдёт для <span class="key">углов</span></li></ul>
+</details>
+</details>
+<details><summary>логика</summary>
+<details><summary>условие</summary>
+<p>Команда <span class="cmd">if</span> использует <span class="key">условие</span>, при выполнении которого может запустить <span class="key">определённый фрагмент кода в фигурных скобках, после условия</span></p>
+<pre>int a 1234;
+int b 4268;
+red 0;
+green 0;
+blue 0;
+if a == 1234 { [если 'a' равняется 1234, то задаём красному 255]
+  red 255;
+}
+if b == a { [если 'b' равняется 'a', то задаём синему 255]
+  blue 255;
+}
+if b &gt; a { [если 'b' больше 'a', задаём зелёному 255]
+  green 255;
+}
+break;</pre>
+<p><span class="key">всего есть такие операторы</span>:</p>
+<ul><li><span class="cmd">==</span> — <span class="key">такое же</span> ли</li><li><span class="cmd">&gt;</span> — <span class="key">больше</span> ли</li><li><span class="cmd">&lt;</span> — <span class="key">меньше</span> ли</li><li><span class="cmd">!=</span> — <span class="key">не одно ли число</span></li><li><span class="cmd">&gt;=</span> — <span class="key">больше или такое</span> же</li><li><span class="cmd">&lt;=</span> — <span class="key">меньше или такое</span> же</li></ul>
+</details>
+<details><summary>циклы</summary>
+<p>Циклы <span class="key">возвращают в ту часть кода</span>, где было написано <span class="cmd">load</span></p>
+<p>Однако чтобы не попасть в бесконечный цикл, его рекомендуется использовать с <span class="key">условием/условиями</span></p>
+<pre>byte a 0;
+load; [ставим точку возвращения]
+if a &lt; 255 {
+  a a + 1;
+  return; [возвращаемся если 'a' &lt; 255]
+}
+red a; [клетка станет красной с 1 итерации, благодаря циклу]
+green 0;
+blue 0;</pre>
+</details>
+</details>
+</details>
+<details><summary>апоптоз</summary>
+<p>Клетка может <span class="key">самоуничтожиться</span> через команду <span class="cmd">apoptosis</span></p>
+<p>При этом это так же работает как и <span class="cmd">split</span> - клетка <span class="key">не выполняет код после этой команды</span></p>
+<pre>apoptosis;
+break;</pre>
+</details>
+<details><summary>органеллы</summary>
+<p>У клетки могут быть <span class="key">органы, влияющие на внешнюю среду</span></p>
+<p>Для создания <span class="key">органеллы</span> на поверхности клетки используйте команду <span class="cmd">organelle</span> с такими входящими данными:</p>
+<ul><li>тип &lt;byte&gt;:<ul><li>фаго &lt;0&gt; — притягивает (тратя на это массу) и <span class="key">поедает еду, попавшую в неё</span></li><li>деворо &lt;1&gt; — ворует массу у смежной клетки</li><li>жгут &lt;2&gt; — <span class="key">двигает</span> клетку по своему направлению и <span class="key">тратит на это массу</span></li></ul></li><li>угол &lt;float&gt; — угол относительно центра клетки</li><li>сила &lt;float&gt; — <span class="key">скорость</span> работы и прочее, однако <span class="key">тратит массу</span> в зависимости от числа</li><li>отзеркаливание &lt;byte&gt;:<ul><li>0 — обычно</li><li>1 — зеркально отражена вдоль своего направления</li></ul></li></ul>
+<pre>byte init 0;
+float angle 0 heirdom 2;
+if init == 0 {
+  organelle 0 0 0.005 0; [фаго органелла с 1 стороны]
+  organelle 2 PI -0.005 1; [жгутик с другой стороны]
+  init 1;
+}
+if MASS &gt; 9 {
+  angle angle + 2.4; [псевдослучайный угол деления]
+  split 0 angle;
+}
+break;</pre>
+<p>Если вам удобнее задавать углы в <span class="key">градусах</span>, вы можете использовать <span class="key">настройки компиляции</span> через команды <span class="cmd">@radian</span> и <span class="cmd">@float</span></p>
+<pre>@radian;
+byte init 0;
+float angle 0 heirdom 2;
+if init == 0 {
+  organelle 0 0 0.005 0; [фаго органелла с 1 стороны]
+  organelle 2 180 -0.005 1; [жгутик с другой стороны, угол в градусах]
+  init 1;
+}
+if MASS &gt; 9 {
+  angle angle + 137.5; [псевдослучайный угол деления]
+  split 0 angle;
+}
+break;</pre>
+<p>Чтобы вернуть всё обратно, используйте <span class="cmd">@float</span></p>
+<pre>@radian;
+@float;
+byte init 0;
+float angle 0 heirdom 2;
+if init == 0 {
+  organelle 0 0 0.005 0; [фаго органелла с 1 стороны]
+  organelle 2 PI -0.005 1; [жгутик с другой стороны через PI, как до этого]
+  init 1;
+}
+if MASS &gt; 9 {
+  angle angle + 2.4; [псевдослучайный угол деления]
+  split 0 angle;
+}
+break;</pre>
+</details>
+<details><summary>онтогенез</summary>
+<p>Через <span class="key">морфоген</span> возможно распространение <span class="key">сигнала на расстоянии</span>, в <span class="key">радиусе</span></p>
+<p>Чтобы <span class="key">подать</span> сигнал используйте <span class="cmd">diffusion</span> в таком виде:</p>
+<ul><li>номер &lt;int&gt; — то, какой <span class="key">номер</span> будет у сигнала, для <span class="key">получения</span> другой клеткой</li><li>радиус &lt;float&gt; — <span class="key">радиус распространения</span> сигнала</li><li>диффузия &lt;float&gt; — <span class="key">скорость деградации</span> сигнала за итерацию</li></ul>
+<p>Чтобы <span class="key">получить</span> сигнал используйте <span class="cmd">detect</span>:</p>
+<ul><li>номер &lt;int&gt; — тот <span class="key">сигнал</span>, который будет проверять клетка</li><li>переменная &lt;float&gt; — <span class="key">та переменная</span>, куда будет записываться <span class="key">сила сигнала</span> (чем ближе источник, тем она больше)</li></ul>
+<pre>byte t 0;
+float c 0;
+float tiny 0.05;
+float low 1;
+if t == 0 {
+  diffusion 0 5 0.01; [излучение сигнала]
+}
+t t + 1;
+if t == 90 {
+  t 0;
+}
+detect 0 c;
+red 0;
+green 0;
+blue 255;
+if tiny &lt; c { [если сигнал зафиксирован, издаёт зелёный]
+  red 0;
+  green 255;
+  blue 0;
+}
+if low &lt; c { [если сигнал близко, издаёт красный]
+  red 255;
+  green 0;
+  blue 0;
+}
+break;</pre>
+</details>
+<details><summary>передача</summary>
+<p>Многоклеточные организмы могут <span class="key">передавать</span> еду по связям <span class="key">между связанными клетками</span>, через команду <span class="cmd">transfer</span> в такой конфигурации:</p>
+<ul><li>сила &lt;float&gt; — то, с какой <span class="key">скоростью (или силой)</span> будет <span class="key">передаваться масса</span></li><li>номер &lt;int&gt; — <span class="key">номер связи</span>, по которой будет <span class="key">передаваться/забираться масса</span></li></ul>
+<pre>byte splitable 0 heirdom 2;
+byte transmission 0 heirdom 0;
+if splitable == 0 {
+  splitable 1;
+  transmission 1;
+  split 1 0;
+}
+if transmission == 0 {
+  transfer 0.01 0; [передача с силой 0.01 по пути 0]
+}
+break;</pre>
+<p>Можно строить при помощи этого более <span class="key">сложные организмы</span>, с клетками, которые будут делать разные функции, делая организм модульным</p>
+<pre>@radian;
+byte a 0 heirdom 0;
+byte b 0 heirdom 1;
+byte c 0 heirdom 2;
+if c == 0 {
+  c 1;
+  a 1;
+  b 1;
+  split 1 0;
+}
+if a == 1 {
+  a 0;
+  organelle 0 0 0.001 1;
+}
+if b == 1 {
+  b 0;
+  organelle 2 180 0.01 1;
+}
+if MASS &lt; 5 {
+  transfer 0.5 0;
+}
+break;</pre>
+</details>
+</details>
+
+  <pre class="art"><span style="color:#FFA500">                                                 -</span>
+<span style="color:#FFA500">                                                 @</span>
+<span style="color:#FFA500">                                                 @@</span>
+<span style="color:#FFA500">                                                 @@</span>
+<span style="color:#FFA500">                                                 @@@</span>
+<span style="color:#FFA500">                                                @@@=</span>
+<span style="color:#FFA500">                                               -@@@</span>
+<span style="color:#FFA500">                                              @@@@@</span>
+<span style="color:#FFA500">                                             @@@@@</span>
+<span style="color:#FFA500">                                           @@@@@@</span>
+<span style="color:#FFA500">                                         %@@@@@@</span>
+<span style="color:#FFA500">                                       +@@@@@@+</span>
+<span style="color:#FFA500">                                     :@@@@@@%           ::</span>
+<span style="color:#FFA500">                                   @@@@@@@@           @@</span>
+<span style="color:#FFA500">                                 @@@@@@@@        =@@@</span>
+<span style="color:#FFA500">                               @@@@@@@@        @@@@</span>
+<span style="color:#FFA500">                             #@@@@@@#-      #@@@%</span>
+<span style="color:#FFA500">                           +@@@@@@@-      +@@@@+</span>
+<span style="color:#FFA500">                         :@@@@@@@%       @@@@@</span>
+<span style="color:#FFA500">                         @@@@@@@        @@@@@@</span>
+<span style="color:#FFA500">                        @@@@@@         @@@@@@</span>
+<span style="color:#FFA500">                       @@@@@@@         @@@@@@</span>
+<span style="color:#FFA500">                       @@@@@@          @@@@@@</span>
+<span style="color:#FFA500">                       @@@@@@          @@@@@@@</span>
+<span style="color:#FFA500">                        @@@@@          @@@@@@@@</span>
+<span style="color:#FFA500">                        @@@@@:          @@@@@@@@</span>
+<span style="color:#FFA500">                         @@@@@           @@@@@@@@</span>
+<span style="color:#FFA500">                          .@@@@           .@@@@@@@</span>
+<span style="color:#FFA500">                           -@@@*           =@@@@@@</span>
+<span style="color:#FFA500">                             *@@@           @@@@@@</span>
+<span style="color:#FFA500">                                @@.          @@@@@</span>
+<span style="color:#FFA500">                                  @@         @@@@</span>
+<span style="color:#FFA500">                                            @@@</span>
+<span style="color:#00A5FF">                  @@@@@@@+ ..              </span><span style="color:#FFA500">@@.</span><span style="color:#00A5FF">                     %@@@@@</span>
+<span style="color:#00A5FF">               @@@@@@@@@                            =***@@*           =@@@@*</span>
+<span style="color:#00A5FF">               #@@@@@@@@@@+--------------------=@@@@@@@@@@@@           #@@@@-</span>
+<span style="color:#00A5FF">                  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                @@@@@</span>
+<span style="color:#00A5FF">                             @@@@@@@@@@@@@@@*                           @@@@@</span>
+<span style="color:#00A5FF">                                                                        @@@@@</span>
+<span style="color:#00A5FF">             %%%@@@::.                                                .@@@@@</span>
+<span style="color:#00A5FF">          +@@@@@@                                                    +@@@@+</span>
+<span style="color:#00A5FF">          #@@@@@@@@@-----                         .-----@@@@@-     -@@@##</span>
+<span style="color:#00A5FF">             @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@     @@@@</span>
+<span style="color:#00A5FF">                      @@@@@@@@@@@@@@@@@@@@@@@@@@@@@            @@@</span>
+<span style="color:#00A5FF"></span>
+<span style="color:#00A5FF"></span>
+<span style="color:#00A5FF">                     ++@@</span>
+<span style="color:#00A5FF">              :    :@@@@@@@:::::::     ::::::::=@:.</span>
+<span style="color:#00A5FF">         @@@@       @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</span>
+<span style="color:#00A5FF">    @@@@@               @@@@@@@@@@@@@@@@@@@@@@@@@@</span>
+<span style="color:#00A5FF"> @@@@@@@                                                             @</span>
+<span style="color:#00A5FF">@@@@@@@@#                                                         #@@@</span>
+<span style="color:#00A5FF"> +@@@@@@@@@@+++                                             +++@@@@@++</span>
+<span style="color:#00A5FF">   :%%@@@@@@@@@@@@@@=:::::                      ::::::=@@@@@@@@@%%+      :@</span>
+<span style="color:#00A5FF">          @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-          @@@</span>
+<span style="color:#00A5FF">                         @@@@@@@@@@@@@@@@@@@@@.                   @@@@@</span>
+<span style="color:#00A5FF">                                                           @@@@@@@@</span>
+<span style="color:#00A5FF">              -- #########:               :##########@@@@@@----:</span>
+<span style="color:#00A5FF">                      **********%@@@@@@@@@@%**********.</span>
+
+
+                                    .                           ..
+                               -*   #                        -@%::=@%
+        .      .      ::.        .:.     .      .        .   %=    :@:
+        @@    :@.  :@%-:*@*    @@=-*@*   @+   %@:       :@.        %@
+        @@    :@.        #@   @@    :@:  @+ .@#                .@@@%
+        =@*   +@.   #@@@@@@   @@@@@@@@+  @@@@=                     +@.
+          .-=-*@.  @#    +@   @#         @+ .@@              *.     @+
+              :@.  @@= :%@@   :@@.  *@   @+   %@-       .@   #@+  :@@
+               =    .=+=  =     .+++.    =     .=        =     -++=</pre>
+
+  <p><a href="#"><button type="button">назад</button></a></p>
+</div>
+
+<div id="privacy">
+<p><a href="#"><button type="button">назад</button></a></p>
+
+<h1>политика конфиденциальности</h1>
+
+<p>Проект: <b>biochemistry</b> — клеточная симуляция с редактором скриптов.<br>Дата последнего обновления: 8 ноября 2026.</p>
+
+<p class="red"><b>Коротко:</b> мы не собираем, не храним и не передаём ваши персональные данные. Всё, что вы создаёте в симуляции, остаётся на вашем устройстве.</p>
+
+<h2>1. Какие данные мы собираем</h2>
+<p>Никакие. В приложении нет регистрации, аккаунтов, рекламы и встроенной аналитики. Мы не знаем, кто вы, откуда вы и какие клетки вы запускаете.</p>
+
+<h2>2. Что хранится на вашем устройстве</h2>
+<ul>
+  <li>скрипты клеток, которые вы пишете в редакторе;</li>
+  <li>настройки симуляции;</li>
+  <li>состояние самой симуляции.</li>
+</ul>
+<p>Эти данные лежат только в памяти вашего устройства. Мы не имеем к ним доступа, а при удалении приложения они удаляются вместе с ним.</p>
+
+<h2>3. Доступ к устройству</h2>
+<p>Симуляция работает без интернета и не требует доступа к камере, микрофону, контактам, геолокации или личным файлам.</p>
+
+<h2>4. Письма разработчику</h2>
+<p>Если вы пишете о баге или ошибке на почту «biochemistrydev@gmail.com», мы увидим ваш адрес и текст письма. Мы используем их только чтобы ответить и исправить проблему, и не передаём третьим лицам. Хотите, чтобы переписку удалили — просто напишите об этом.</p>
+
+<h2>5. Сторонние сервисы</h2>
+<p>Скачать apk и исходный код, а также зайти в сообщество можно через Telegram. Это сторонний сервис со своей политикой конфиденциальности, и мы за неё не отвечаем. Всё, что вы пишете в сообществе, видят другие участники, так что не публикуйте там личные данные.</p>
+
+<h2>6. Дети</h2>
+<p>Мы не собираем данные ни о ком, в том числе о детях, потому что вообще ничего не собираем.</p>
+
+<h2>7. Изменения</h2>
+<p>Если политика изменится, новая версия появится на этой странице с новой датой обновления.</p>
+
+<h2>8. Связь</h2>
+<p>Вопросы по конфиденциальности, баги и предложения: «biochemistrydev@gmail.com»</p>
+
+<p><a href="#"><button type="button">назад</button></a></p>
+</div>
+
+</body>
+</html>
